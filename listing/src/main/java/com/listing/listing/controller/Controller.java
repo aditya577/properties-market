@@ -35,7 +35,7 @@ public class Controller {
     }
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
-    public GetAllListingResponse getAllListing(@RequestParam(name="user_id", required = false) Integer userId,
+    public GetAllListingResponse getAllListing(@RequestParam(name="userId", required = false) Integer userId,
                                                @PageableDefault(page = 0, value = 10) Pageable pageable) {
         return getAllListings.withUserId(userId).withPageable(pageable).getAll();
     }
