@@ -23,9 +23,9 @@ public class Controller {
 
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = {MediaType.APPLICATION_JSON_VALUE})
     public CreateListingResponse createListing(
-            @RequestParam(name = "user_id") Integer userId
-            , @RequestParam(name = "price") Integer price
-            , @RequestParam(name = "listing_type") String listingType) {
+            @RequestParam(name = "userId") Integer userId,
+            @RequestParam(name = "price") Integer price,
+            @RequestParam(name = "listingType") String listingType) {
         CreateListingRequest request = CreateListingRequest.builder()
                 .listingType(listingType)
                 .price(price)
