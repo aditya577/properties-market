@@ -4,7 +4,6 @@ import com.listing.listing.model.Listing;
 import com.listing.listing.repository.ListingRepository;
 import com.listing.listing.requests.CreateListingRequest;
 import com.listing.listing.response.CreateListingResponse;
-import com.listing.listing.response.ListingResponse;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -27,13 +26,7 @@ public class CreateListing {
         if(createdListing != null)
              response = CreateListingResponse.builder()
                      .result(true)
-                     .listing(ListingResponse.builder()
-                             .listingType(createdListing.getListingType())
-                             .userId(createdListing.getUserId())
-                             .price(createdListing.getPrice())
-                             .createdAt(createdListing.getCreatedAt())
-                             .updatedAt(createdListing.getUpdatedAt())
-                             .build())
+                     .listing(createdListing)
                      .build();
         else
             response = CreateListingResponse.builder()

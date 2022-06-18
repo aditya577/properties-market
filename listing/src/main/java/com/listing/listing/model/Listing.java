@@ -1,6 +1,5 @@
 package com.listing.listing.model;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,7 +14,7 @@ import javax.persistence.Id;
 public class Listing {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
     private Integer userId;
     private String listingType;
     private Integer price;

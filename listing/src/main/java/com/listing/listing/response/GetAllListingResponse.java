@@ -1,5 +1,6 @@
 package com.listing.listing.response;
 
+import com.listing.listing.model.Listing;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,5 +10,5 @@ import java.util.List;
 @Builder
 public class GetAllListingResponse {
     private Boolean result;
-    private List<ListingResponse> listings;
+    private List<Listing> listings;
 }

@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/listings")
-public class Controller {
+public class ListingController {
     private final CreateListing createListing;
     private final GetAllListings getAllListings;
 
-    public Controller(CreateListing createListing, GetAllListings getAllListings) {
+    public ListingController(CreateListing createListing, GetAllListings getAllListings) {
         this.createListing = createListing;
         this.getAllListings = getAllListings;
     }
