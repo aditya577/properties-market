@@ -59,7 +59,7 @@ public class CreateListings {
 
     private void validateRequest() {
         if(this.request.getUserId() == null || this.request.getListingType() == null || this.request.getPrice() == null)
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "request-params are invalid");
     }
 
 

@@ -24,12 +24,6 @@ public class PublicApiController {
     @Autowired
     private CreateListings createListings;
 
-//    public PublicApiController(GetAllListingsWithUser getAllListingsWithUser, CreateUser createUser, CreateListings createListings) {
-//        this.getAllListingsWithUser = getAllListingsWithUser;
-//        this.createUser = createUser;
-//        this.createListings = createListings;
-//    }
-
     @GetMapping(path = "/listings", produces = MediaType.APPLICATION_JSON_VALUE)
     public GetAllListingsWithUserResponse getAllListings(@PageableDefault(page = 0, value = 10) Pageable pageable) {
         return getAllListingsWithUser.withPageable(pageable).getAll();

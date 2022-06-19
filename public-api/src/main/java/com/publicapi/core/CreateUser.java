@@ -46,7 +46,7 @@ public class CreateUser {
 
     private void validateRequest() {
         if(this.request.getName() == null)
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "request-param is invalid");
     }
 
     public CreateUser withRequest(CreateUserRequest request) {
