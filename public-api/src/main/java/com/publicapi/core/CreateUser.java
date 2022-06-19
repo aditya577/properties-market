@@ -18,6 +18,7 @@ public class CreateUser {
 
 
     public CreateUsersResponse createUser() {
+        validateRequest();
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED.toString());
@@ -41,6 +42,11 @@ public class CreateUser {
             user = response.getUsers();
 
         return CreateUsersResponse.builder().user(user).build();
+    }
+
+    private void validateRequest() {
+        if(this.request.getName() == null)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "");
     }
 
     public CreateUser withRequest(CreateUserRequest request) {

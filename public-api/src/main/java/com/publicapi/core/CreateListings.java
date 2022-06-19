@@ -23,6 +23,7 @@ public class CreateListings {
     private static final String USER_API = "http://localhost:8081/users";
 
     public CreateListingsResponse createListing() {
+        validateRequest();
         RestTemplate restTemplate = new RestTemplate();
         String url = USER_API + "/" + this.request.getUserId();
         CreateUserApiResponse user = Objects.requireNonNull(restTemplate.getForObject(url, CreateUserApiResponse.class));
@@ -54,6 +55,11 @@ public class CreateListings {
             listing = response.getListing();
 
         return CreateListingsResponse.builder().listing(listing).build();
+    }
+
+    private void validateRequest() {
+        if(this.request.getUserId() == null || this.request.getListingType() == null || this.request.getPrice() == null)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "");
     }
 
 
