@@ -4,6 +4,7 @@ import com.user.user.core.CreateUser;
 import com.user.user.core.GetUsers;
 import com.user.user.response.GetAllUsersResponse;
 import com.user.user.response.GetUserByIdResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
@@ -12,13 +13,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    private final CreateUser createUser;
-    private final GetUsers getUsers;
 
-    public UserController(CreateUser createUser, GetUsers getUsers) {
-        this.createUser = createUser;
-        this.getUsers = getUsers;
-    }
+    @Autowired
+    private CreateUser createUser;
+    @Autowired
+    private GetUsers getUsers;
 
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
     produces = {MediaType.APPLICATION_JSON_VALUE})

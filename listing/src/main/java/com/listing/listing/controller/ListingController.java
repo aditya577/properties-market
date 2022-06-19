@@ -5,6 +5,7 @@ import com.listing.listing.core.GetAllListings;
 import com.listing.listing.requests.CreateListingRequest;
 import com.listing.listing.response.CreateListingResponse;
 import com.listing.listing.response.GetAllListingResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
@@ -13,13 +14,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/listings")
 public class ListingController {
-    private final CreateListing createListing;
-    private final GetAllListings getAllListings;
-
-    public ListingController(CreateListing createListing, GetAllListings getAllListings) {
-        this.createListing = createListing;
-        this.getAllListings = getAllListings;
-    }
+    @Autowired
+    private CreateListing createListing;
+    @Autowired
+    private GetAllListings getAllListings;
 
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = {MediaType.APPLICATION_JSON_VALUE})
     public CreateListingResponse createListing(

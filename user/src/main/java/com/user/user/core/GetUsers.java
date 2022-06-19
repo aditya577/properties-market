@@ -4,6 +4,7 @@ import com.user.user.model.Users;
 import com.user.user.repository.UserRepository;
 import com.user.user.response.GetAllUsersResponse;
 import com.user.user.response.GetUserByIdResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +16,8 @@ public class GetUsers {
 
     private Integer id;
     private Pageable pageable;
-    private final UserRepository repo;
-
-    public GetUsers(UserRepository repo) {
-        this.repo = repo;
-    }
+    @Autowired
+    private UserRepository repo;
 
     public GetAllUsersResponse getAll() {
         List<Users> users = repo.findAll(this.pageable).getContent();

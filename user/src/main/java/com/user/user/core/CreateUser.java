@@ -3,6 +3,7 @@ package com.user.user.core;
 import com.user.user.model.Users;
 import com.user.user.repository.UserRepository;
 import com.user.user.response.GetUserByIdResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -10,11 +11,9 @@ import java.sql.Timestamp;
 @Service
 public class CreateUser {
     private String name;
-    private final UserRepository repo;
 
-    public CreateUser(UserRepository repo) {
-        this.repo = repo;
-    }
+    @Autowired
+    private UserRepository repo;
 
     public GetUserByIdResponse createUser() {
         Users users = new Users(this.name,

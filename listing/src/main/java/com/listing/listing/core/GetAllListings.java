@@ -3,6 +3,7 @@ package com.listing.listing.core;
 import com.listing.listing.model.Listing;
 import com.listing.listing.repository.ListingRepository;
 import com.listing.listing.response.GetAllListingResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +14,8 @@ public class GetAllListings {
 
     private Integer userId;
     private Pageable pageable;
-    private final ListingRepository repo;
-
-    public GetAllListings(ListingRepository repo) {
-        this.repo = repo;
-    }
+    @Autowired
+    private ListingRepository repo;
 
     public GetAllListingResponse getAll() {
         List<Listing> listingList;
